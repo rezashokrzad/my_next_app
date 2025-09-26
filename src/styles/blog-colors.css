@@ -1,0 +1,16 @@
+/* Optional: keep blog palette decoupled yet consistent with site vars */
+:root {
+  --near-white: #FAFAFA;
+  --near-black: #121212;
+  --olive-700: #556B2F; /* Dark Olive Green */
+  --pistachio: #B6C649; /* Pistachio */
+  --periwinkle: #8B95C9; /* Periwinkle */
+}
+
+/* Dark mode example (if your site has it) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --near-white: #0b0b0b;
+    --near-black: #EAEAEA;
+  }
+}
