@@ -1,6 +1,6 @@
 "use client";
 
-import { Pillar } from "./types";
+import { Pillar } from "@/modules/blog/types";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
