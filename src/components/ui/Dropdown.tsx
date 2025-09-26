@@ -134,20 +134,13 @@ export default function Dropdown({ menu }: { menu: Menu }) {
                     "color-mix(in oklab, var(--color-fg) 18%, transparent)",
                 }}
               >
-                <ul className="py-2">
-                  {menu.items.map((it) => (
-                    <li key={it.href}>
-                      <Link
-                        href={it.href}
-                        role="menuitem"
-                        onClick={() => setOpen(false)}
-                        className="block px-4 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-                      >
-                        {it.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <ul className="py-2">
+                {(menu.items ?? []).map((it) => (
+                  <li key={it.href}>
+                    <Link href={it.href}>{it.label}</Link>
+                  </li>
+                ))}
+              </ul>
               </motion.div>
             )}
           </AnimatePresence>,
