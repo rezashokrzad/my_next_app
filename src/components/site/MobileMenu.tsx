@@ -53,15 +53,17 @@ export default function MobileMenu(){
                 {NAV_MENUS.map((m)=>(
                   <div key={m.title}>
                     <div className="text-xs uppercase tracking-wide opacity-60 mb-2">{m.title}</div>
-                    <ul className="space-y-1.5">
-                      {m.items.map((it)=>(
-                        <li key={it.href}>
-                          <Link href={it.href} className="block px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10">
-                            {it.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    {Array.isArray(m.items) && m.items.length > 0 && (
+                        <ul className="space-y-1.5">
+                          {m.items.map((it) => (
+                            <li key={it.href}>
+                              <Link href={it.href} className="block px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10">
+                                {it.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                   </div>
                 ))}
               </nav>
