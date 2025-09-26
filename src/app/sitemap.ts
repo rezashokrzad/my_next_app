@@ -1,9 +1,5 @@
 import type { MetadataRoute } from "next";
 
-// Make the route static-friendly for `next export`
-export const dynamic = "force-static";
-export const revalidate = 60 * 60 * 24; // 24h (optional)
-
 // Default to your GitHub Pages base when env var isn't set
 const REPO = "my_next_app";
 const GITHUB_PAGES_BASE = `https://rezashokrzad.github.io/${REPO}`;
