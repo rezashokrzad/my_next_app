@@ -1,15 +1,25 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
-const BASE = 'https://rezashokrzad.github.io/my_next_app'
+// Make the route static-friendly for `next export`
+export const dynamic = "force-static";
+export const revalidate = 60 * 60 * 24; // 24h (optional)
+
+// Default to your GitHub Pages base when env var isn't set
+const REPO = "my_next_app";
+const GITHUB_PAGES_BASE = `https://rezashokrzad.github.io/${REPO}`;
+
+// Normalize to no trailing slash so paths concatenate cleanly.
+const SITE =
+  (process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "")) || GITHUB_PAGES_BASE;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
-return [
-    { url: `${BASE}/`, changeFrequency: 'weekly', priority: 1 },
-    { url: base, priority: 1 },
-    { url: base + "/blog", priority: 0.8 },
-    { url: base + "/shop", priority: 0.8 },
-    { url: base + "/forum", priority: 0.6 },
-    { url: base + "/about", priority: 0.5 },
-];
+  const now = new Date();
+
+  return [
+    { url: `${SITE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE}/blog`, lastModified: now, priority: 0.8 },
+    { url: `${SITE}/shop`, lastModified: now, priority: 0.8 },
+    { url: `${SITE}/forum`, lastModified: now, priority: 0.6 },
+    { url: `${SITE}/about`, lastModified: now, priority: 0.5 },
+  ];
 }
