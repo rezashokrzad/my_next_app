@@ -9,4 +9,4 @@ const nextConfig: NextConfig = {
   assetPrefix: isProd ? `/${repoName}/` : undefined,
   // trailingSlash: true, // enable if assets 404
 }
-export default nextConfig
+export default nextConfig;
